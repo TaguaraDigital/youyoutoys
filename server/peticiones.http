@@ -90,9 +90,20 @@ Content-Type: application/json
 
 ### ================== ORDERS ==============================
 
-### Get all Ordes -- > sumary
+### Get all Orders -- > summary [one line per order] 
 GET http://localhost:3500/api/v1/orders/
 Content-Type: application/json
+
+
+### Get order by Id -- > order detail at order id submit
+GET http://localhost:3500/api/v1/orders/1
+Content-Type: application/json
+
+
+### Get order by Id Summary -- > summary of and particular order [one line]
+GET http://localhost:3500/api/v1/orders/2/header
+Content-Type: application/json
+
 
 ### Delete order by Id (Delete details and main information of a order)
 DELETE http://localhost:3500/api/v1/orders/3/orderDelete
@@ -103,7 +114,7 @@ Content-Type: application/json
 GET http://localhost:3500/api/v1/products/2/ordersGet
 Content-Type: application/json
 
-### Create a orders
+### Create a orders for a user
 POST http://localhost:3500/api/v1/products/2/ordersCreate
 Content-Type: application/json
 
@@ -118,6 +129,7 @@ Content-Type: application/json
         ]
 
     }
+
 
 ### Confirm orders
 PUT http://localhost:3500/api/v1/products/1/ordersConfirm

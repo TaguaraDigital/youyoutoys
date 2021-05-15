@@ -39,7 +39,6 @@ ProductsFinder.byId = async (id) => {
     return await response.json()
 }
 
-
 ProductsFinder.orderCreate = async (user_id,orders) => {
     
     const response = await fetch(`${URL}${user_id}/ordersCreate`,

@@ -1,23 +1,26 @@
 import { useContext, } from 'react';
+
 import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer';
-import {AuthContext} from '../../hooks/contexts/AuthContext';
-import OrdersAll from '../../components/orders/OrderSummaryFinder';
-import OrderFinder from '../../components/orders/OrderFinder';
-// import OrdersFinder from '../../components/orders/OrderFinder';
 
-const Orders = () => {
+import OrderHeader from '../../components/orders/OrderHeader';
+import OrderDetailList from '../../components/orders/OrderDetailList';
+
+
+import {AuthContext} from '../../hooks/contexts/AuthContext';
+
+const OrdersDetails = () => {
 
     const { currentUser, setCurrentUser, setAuth} = useContext(AuthContext);
 
     return (
         <>
             <Header page="orders" />
-            <OrderFinder/>
-            <OrdersAll/>
+            <OrderHeader />
+            <OrderDetailList />
             <Footer id="contact" />
         </>
     )
 }
 
-export default Orders;
+export default OrdersDetails;

@@ -1,96 +1,30 @@
-import {useEffect, useContext} from "react";
-import { useHistory } from "react-router-dom";
-import OrdersFinder from "../../services/apis/OrdersFinder";
-import { OrdersContext } from "../../hooks/contexts/OrdersContext";
+import { InputSearch, SearchContainer, SearchForm } from "./Order.Style"
 
-const OrdersGetAll = () => {
-
-  let history = useHistory();
-
-  const { ordersAll, setOrdersAll } = useContext(OrdersContext);
-
-  const formatCurrency = (num) =>  {
-    return Number(num.toFixed(2)).toLocaleString();
-  }
- 
-  useEffect(() => {
-    const fetchData = async () => {
-
-      try {
-        const response = await OrdersFinder.all();
-        if (response.message === 'ok'){
-            setOrdersAll(response.data.orders)
-        }
-
-      } catch (err) { console.log(err)}
-    };
-    fetchData();
-
-  }, [])
-
-  const handleDelete = async (e, id) => {
-    e.stopPropagation();
-    try {
-      const response = await OrdersFinder.delete(id);
-      setOrdersAll(
-        ordersAll.filter((order) => {
-          return order.order_id !== id;
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  
+const OrderFinder = () => {
     return (
-    <div className="list-group">
-    <table className="smart-table">
-      <thead>
-        <tr>
-          <th> Order </th>
-          <th> User </th>
-          <th> Name </th>
-          <th> Units </th>
-          <th> Amount </th>
-          <th> Status </th>
-          <th >Edit</th>
-          <th >Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-      { ordersAll && ordersAll.length > 0 &&  
-        ordersAll.map((order) => {
-          return (
-            <tr key={order.order_id}>
-              <td data-col-title="Order">  {order.order_id} </td>
-              <td data-col-title="User"> {order.user_id } </td>
-              <td data-col-title="Name"> {order.name } </td>
-              <td data-col-title="Units"> {order.units} </td>
-              <td data-col-title="Amount"> {(order.totalOrder)} </td>
-              <td data-col-title="Status"> {(order.order_status)} </td>
-              <td>
-                <button
-                  className="btn btn-warning"
-                >
-                  Update
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => handleDelete(e, order.order_id)}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-            );
-          })
-        }
-      </tbody>
-    </table>
-    </div>
-  );
+        <SearchContainer>
+
+        <h1 className="section-title section-title--search">You You Toys</h1>
+        <SearchForm className="search-form" id="search-form">
+           <div className="form-control-search">
+              <label htmlFor="customer" className="search-label">Cliente</label>
+              <InputSearch name="brand" placeholder="Cliente" className="input-search" id="search-brand" />
+           </div>
+
+           <div className="form-control-search">
+              <label htmlFor="status" className="search-label">Status</label>
+              <InputSearch name="category" placeholder="Status" className="input-search" id="search-status" />
+           </div>
+
+           <div div className="form-control-search">
+              <label htmlFor="fecha" className="search-label">Fecha</label>
+              <InputSearch name="fecha" placeholder="Fecha" className="input-search" id="search-fecha" />
+           </div>
+           <button >Buscar</button>
+           {/* <div className="msg-error" id="msg-error"></div> */}
+        </SearchForm>
+     </SearchContainer>
+    )
 }
 
-export default OrdersGetAll;
+export default OrderFinder

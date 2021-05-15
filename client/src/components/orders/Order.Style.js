@@ -94,3 +94,67 @@ font-size: ${(props) => props.big ? "1.5rem" : ".85rem" }  ;
     }
 
 `; 
+
+export const SearchContainer = styled.div`
+    position: relative;
+    top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+ `;
+ 
+ export const SearchForm = styled.form`
+    width: 80%;
+    height: 100px; 
+    padding: 0 .5rem;
+    z-index: 1;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    flex-wrap: wrap;
+    color: var(--darkClr);
+
+    button{
+        margin: 0;
+        padding: .5rem 1rem;
+        border-radius: 5px;
+        background: var(--mainClr);
+        color: var(--lightClr);
+        cursor: pointer;
+        &:hover{
+            background: var(--altClr);
+        }
+    }
+`;
+
+export const InputSearch = styled.input`
+    width: 300px;
+    height: 2rem;
+    padding: 0 1rem;
+    
+    outline: none;
+    border: 1px solid rgba(200,200,200, .3);
+    border-radius: 5px;
+    border-bottom: 2px solid transparent;
+    
+    box-shadow: none;
+
+    transition: all .5s ease-in-out;
+
+    &::placeholder {
+        color: rgba(200,200,200, .9);
+    }
+
+    &:not(:last-of-type) {
+        border-bottom: 2px solid rgba(200,200,200,.3);
+    }
+
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid var(--mainClr);
+    }
+`;
