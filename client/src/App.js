@@ -42,7 +42,7 @@ const App = () => {
           <Route exact path='/home' component={isAuthenticated ? Home : Landing } />
           <Route exact path='/orders' component={ !isAuthenticated ? Landing : currentUser.role === 'AD' ? OrdersAdmin : Orders }  />
           <Route exact path='/ordersConfirm' component={ !isAuthenticated ? Landing : OrderConfirm }  />
-          <Route exact path='/ordersDetails/:id' component={ !isAuthenticated ? Landing : currentUser.role === 'AD' ? OrderDetails : Orders }  />
+          <Route exact path='/ordersDetails/:id' component={ !isAuthenticated ? Landing : currentUser.role === 'AD' ? OrdersDetails : Orders }  />
 
           <Route exact path='/images' component={ImagesEnter} />
           <Route exact path='/imagesSlider' component={ImagesSlider} />
